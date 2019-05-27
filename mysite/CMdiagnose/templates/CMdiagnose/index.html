@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+
+    <ul>
+    {% for person in Person_list %}
+        <li><a href="{% url 'CMdiagnose:detail' person.pk %}">{{ person.pk }}</a></li>
+    {% endfor %}
+    </ul>
+

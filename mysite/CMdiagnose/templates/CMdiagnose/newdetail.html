@@ -1,0 +1,176 @@
+
+    {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'CMdiagnose/multi-select/css/multi-select.css' %}">
+
+
+<h1>New</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'CMdiagnose:new' %}" method="post">
+{% csrf_token %}
+<label>General Symptoms</label>
+<input type="text" name="general" value=""><br>
+<h1>整體</h1>
+<input type="text" id="whole" name="whole" value=""><br>
+
+  <select multiple='multiple' class='callbacks' name="whole">
+  </select>
+
+<h1>脈象</h1>
+  <input type="text" id="pulse" name="pulse" value=""><br>
+  
+    <select multiple='multiple' class='callbacks' name="pulse">
+  </select>
+
+<h1>舌象</h1>
+  <input type="text" id="tongue_" name="tongue_" value=""><br>
+  
+    <select multiple='multiple' class='callbacks' name="tongue_">
+  </select>
+
+<h1>頭部</h1>
+<input type="text" id="head" name="head" value=""><br>
+
+  <select multiple='multiple' class='callbacks' name="head">
+      <option value='頭痛'>頭痛</option>
+      <option value='頭眩'>頭眩</option>
+      <option value='頭汗'>頭汗</option>
+      <option value='眩暈'>眩暈</option>
+      <option value='面黃'>面黃</option>
+      <option value='發腫'>發腫</option>
+      <option value='面浮腫'>面浮腫</option>
+      <option value='眩暈'>眩暈</option>
+      <option value='面色痿白'>面色痿白</option>
+      <option value='面痛'>面痛</option>
+      <option value='黃胖面腫'>黃胖面腫</option>
+      <option value='戴陽'>戴陽</option>
+  </select>
+
+<h1>眼部</h1>
+  <input type="text" id="eye" name="eye" value=""><br>
+  
+    <select multiple='multiple' class='callbacks' name="eye">
+    </select>
+
+<h1>耳鼻喉</h1>
+<input type="text" id="ent" name="ent" value=""><br>
+
+  <select multiple='multiple' class='callbacks' name="ent">
+  </select>
+
+
+<h1>口腔</h1>
+<input type="text" id="mouth" name="mouth" value=""><br>
+
+  <select multiple='multiple' class='callbacks' name="mouth">
+      <option value='口苦'>口苦</option>
+      <option value='口燥'>口燥</option>
+      <option value='舌卷'>舌卷</option>
+      <option value='口渴'>口渴</option>
+      <option value='燥渴'>燥渴</option>
+      <option value='吐清沫'>吐清沫</option>
+      <option value='吐蛔'>吐蛔</option>
+      <option value='口吐黃涎'>口吐黃涎</option>
+      <option value='煩渴'>煩渴</option>
+      <option value='嘔吐'>嘔吐</option>
+      <option value='呃逆'>呃逆</option>
+      <option value='舌捲'>舌捲</option>
+      <option value='嗽水不欲咽'>嗽水不欲咽</option>
+      <option value='吐血'>吐血</option>
+      <option value='口苦'>口苦</option>
+      <option value='消渴'>消渴</option>
+      <option value='唇舌白'>唇舌白</option>
+      <option value='嘔吐'>嘔吐</option>
+      <option value='唇赤'>唇赤</option>
+      <option value='熱吐'>熱吐</option>
+      <option value='唇白'>唇白</option>
+      <option value='唇焦'>唇焦</option>
+      <option value='口臭'>口臭</option>
+      <option value='齒痛'>齒痛</option>
+      <option value='流涎'>流涎</option>
+      <option value='呃逆'>呃逆</option>
+      <option value='耳聾'>耳聾</option>
+      <option value='舌黑燥渴'>舌黑燥渴</option>
+      <option value='舌苔滑'>舌苔滑</option>
+      <option value='燥渴'>燥渴</option>
+      <option value='唇舌紅'>唇舌紅</option>
+  </select>
+
+  <h1>背部</h1>
+  <input type="text" id="back" name="back" value=""><br>
+  
+    <select multiple='multiple' class='callbacks' name="back">
+    </select>
+
+
+  
+<h1>胸部</h1>
+<input type="text" id="chest" name="chest" value=""><br>
+
+  <select multiple='multiple' class='callbacks' name="chest">
+  </select>
+
+  
+<h1>腹部</h1>
+<input type="text" id="stomach" name="stomach" value=""><br>
+
+<select multiple='multiple' class='callbacks' name="stomach">
+</select>
+
+    
+<h1>下肢</h1>
+<input type="text" id="lowerpart" name="lowerpart" value=""><br>
+
+<select multiple='multiple' class='callbacks' name="lowerpart">
+</select>
+
+    
+<h1>四肢</h1>
+<input type="text" id="limbs" name="limbs" value=""><br>
+
+<select multiple='multiple' class='callbacks' name="limbs">
+</select>
+
+
+<h1>睡眠</h1>
+<input type="text" id="sleep" name="sleep" value=""><br>
+
+<select multiple='multiple' class='callbacks' name="sleep">
+</select>
+  <!-- ends -->
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+  <script src="{% static 'CMdiagnose/multi-select/js/jquery.multi-select.js' %}"></script>
+  <script type="text/javascript">
+  // run pre selected options
+  $(".callbacks[name=head]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("head").value += values + "," ;
+    }
+  });
+
+  $(".callbacks[name=mouth]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("mouth").value += values + "," ;
+  }
+});
+  </script>
+<input type="submit" value="get result">
+</form>
+
+
