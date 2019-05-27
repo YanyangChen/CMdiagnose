@@ -56,9 +56,20 @@ def newPerson(request):
     b=Body()
     b.general=request.POST['general']
     b.head=''
-    b.head += request.POST['head']
+    b.head += request.POST['headt']
     b.general += b.head
-    
+    b.general += request.POST['wholet']
+    b.general += request.POST['tongue_t']
+    b.general += request.POST['eyet']
+    b.general += request.POST['entt']
+    b.general += request.POST['neckt']
+    b.general += request.POST['backt']
+    b.general += request.POST['chestt']
+    b.general += request.POST['stomacht']
+    b.general += request.POST['lowerpartt']
+    b.general += request.POST['limbst']
+    b.general += request.POST['excrut']
+    b.general += request.POST['sleept']
     b.save()
     t=Tongue(body=b)
     t.save()
