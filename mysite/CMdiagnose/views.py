@@ -54,12 +54,10 @@ def tell(request, person_id):
 
 def newPerson(request):
     b=Body()
-    b.general=request.POST['general']
-    b.head=''
-    b.head += request.POST['headt']
-    b.general += b.head
+    b.general=''
+    b.general += request.POST['headt']
     b.general += request.POST['wholet']
-    b.general += request.POST['tongue_t']
+    # b.general += request.POST['tongue_t']
     b.general += request.POST['eyet']
     b.general += request.POST['entt']
     b.general += request.POST['neckt']
@@ -72,8 +70,26 @@ def newPerson(request):
     b.general += request.POST['sleept']
     b.save()
     t=Tongue(body=b)
+
+    
+    #get tongue symptoms
+    t.tip += request.POST['t_tipt']
+    # t.root += request.POST['t_roott']
+    t.side += request.POST['t_sidet']
+    t.fur += request.POST['t_furt']
+    t.color += request.POST['t_colort']
+    t.moisture += request.POST['t_moisturet']
+    t.middle += request.POST['t_middlet']
+    t.bottom += request.POST['t_bottomt']
+    
+    t_result=''
+    t_result=t.check_()
+
+    #get body symptoms
+    
+    
     t.save()
-    the_person = Person(body=b,tongue=t)
+    
     try:
 
         the_person = Person(body=b,tongue=t)
@@ -87,8 +103,10 @@ def newPerson(request):
         })
     else:
         print (the_person.body.general)
+        
         caselist=Cases.objects.all()
         the_person.body.result=''
+        the_person.body.result=t_result
         for case in caselist:
             case.case_check(the_person.body)
         the_person.body.save()

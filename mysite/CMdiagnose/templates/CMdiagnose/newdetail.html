@@ -19,8 +19,63 @@
 
 <form action="{% url 'CMdiagnose:new' %}" method="post">
 {% csrf_token %}
-<label>General Symptoms</label>
-<input type="text" name="general" value=""><br>
+<!-- <label>General Symptoms</label>
+<input type="text" name="general" value=""><br> -->
+<h1>舌診</h1>
+<label>舌尖</label>
+<input type="text" id="t_tipt" name="t_tipt" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_tip">
+    <option value=red>赤</option>
+    <option value=burr>芒刺</option>
+</select>
+<!-- <label>舌根</label>
+<input type="text" id="t_roott" name="t_roott" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_root"></select>
+</select> -->
+<label>舌邊</label>
+<input type="text" id="t_sidet" name="t_sidet" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_side">
+    <option value=red>赤</option>
+    <option value=burr>芒刺</option>
+</select>
+<label>舌苔</label>
+<input type="text" id="t_furt" name="t_furt" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_fur">
+    <option value=none>無苔</option>
+    <option value=thick>厚苔</option>
+    <option value=thin>薄苔</option>
+    <option value=crack>燥裂苔</option>
+</select>
+<label>舌色</label>
+<input type="text" id="t_colort" name="t_colort" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_color">
+    <option value=red>紅</option>
+    <option value=yellow>黃</option>
+    <option value=black>黑</option>
+    <option value=white>白</option>
+    <option value=purple>紫</option>
+</select>
+<label>舌中</label>
+<input type="text" id="t_middlet" name="t_middlet" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_middle">
+    <option value=yellow>黃</option>
+    <option value=black>黑</option>
+</select>
+<label>舌底</label>
+<input type="text" id="t_bottomt" name="t_bottomt" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_bottom">
+    <option value=red>紅</option>
+    <option value=dry>嗌乾</option>
+</select>
+<label>舌濕度</label>
+<input type="text" id="t_moisturet" name="t_moisturet" value=""><br>
+<select multiple='multiple' class='callbacks' name="t_moisture">
+    <option value=moist>濕</option>
+    <option value=dry>乾</option>
+</select>
+
+
+
 <h1>整體</h1>
 <input type="text" id="wholet" name="wholet" value=""><br>
   <select multiple='multiple' class='callbacks' name="whole">
@@ -88,7 +143,7 @@
     <select multiple='multiple' class='callbacks' name="pulse">
   </select> -->
 
-<h1>舌象</h1>
+<!-- <h1>舌象</h1>
   <input type="text" id="tongue_t" name="tongue_t" value=""><br>
   
     <select multiple='multiple' class='callbacks' name="tongue_">
@@ -101,7 +156,7 @@
         <option value=木舌>木舌</option>
         <option value=無液>無液</option>
         <option value=舌苔薄黃>舌苔薄黃</option>
-  </select>
+  </select> -->
 
 <h1>頭部</h1>
 <input type="text" id="headt" name="headt" value=""><br>
@@ -390,6 +445,63 @@
   <script src="{% static 'CMdiagnose/multi-select/js/jquery.multi-select.js' %}"></script>
   <script type="text/javascript">
   // run pre selected options
+
+  $(".callbacks[name=t_tip]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_tipt").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_root]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_roott").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_side]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_sidet").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_fur]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_furt").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_color]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_colort").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_middle]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_middlet").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_bottom]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_bottomt").value += values + "," ;
+  }
+});
+
+$(".callbacks[name=t_moisture]").multiSelect({
+  afterSelect: function(values){
+    alert("Select value: "+values);
+    document.getElementById("t_moisturet").value += values + "," ;
+  }
+});
+
   $(".callbacks[name=whole]").multiSelect({
   afterSelect: function(values){
     alert("Select value: "+values);
@@ -411,12 +523,12 @@
     }
   });
 
-  $(".callbacks[name=tongue_]").multiSelect({
-  afterSelect: function(values){
-    alert("Select value: "+values);
-    document.getElementById("tongue_t").value += values + "," ;
-  }
-});
+//   $(".callbacks[name=tongue_]").multiSelect({
+//   afterSelect: function(values){
+//     alert("Select value: "+values);
+//     document.getElementById("tongue_t").value += values + "," ;
+//   }
+// });
 
   $(".callbacks[name=mouth]").multiSelect({
   afterSelect: function(values){

@@ -36,63 +36,65 @@ class Tongue(models.Model):
     def check_(self):
         # self.color=str("_")
         # self.bottom=str("_")
-        self.body.result=str("")
+        self.body.result=str("==============================================") + "\n" + "\n" + "\n"  + "舌象" + "\n" + "\n"
         if ("white" in self.color and "thick" in self.fur):
-            self.body.result+="stomach cold--寒邪入胃"
+            self.body.result+="stomach cold--寒邪入胃"+ "\n" + "\n" 
 
         if ("yellow" in self.color and "thick" in self.fur):
-            self.body.result+="stomach cold turn to fevor--寒邪化火"
+            self.body.result+="stomach cold turn to fevor--寒邪化火"+ "\n" + "\n" 
 
         if ("black" in self.color and "thick" in self.fur):
-            self.body.result+="stomach cold turn to severe fevor--热甚失治"
+            self.body.result+="stomach cold turn to severe fevor--热甚失治"+ "\n" + "\n" 
 
         if ("white" in self.color and "none" in self.fur and "moist" in self.moisture):
-            self.body.result+="spleen faint and cold--脾胃虚寒"
+            self.body.result+="spleen faint and cold--脾胃虚寒"+ "\n" + "\n" 
 
         if ("white" in self.color and "none" in self.fur and "moist" in self.moisture\
             and ("white" in self.body.face or "white" in self.body.lips)):
             self.body.result+="spleen faint and cold--脾胃虚寒, \
-            此或泄泻或受湿。脾无火力。速宜党参、焦术、木香、茯苓、炙草、乾姜、大枣以振之。"
+            此或泄泻或受湿。脾无火力。速宜党参、焦术、木香、茯苓、炙草、乾姜、大枣以振之。"+ "\n" + "\n" 
 
         if ("black" in self.color and "thick" in self.fur and "crack" in self.fur and "dry" in self.moisture):
-            self.body.result+="stomach cold turn to severe fevor--热甚失治"
+            self.body.result+="stomach cold turn to severe fevor--热甚失治"+ "\n" + "\n" 
         
         if (("yellow" in self.color or "yellow" in self.middle) and "thin" in self.fur ):
-            self.body.result+="spleen fevor--脾热"
+            self.body.result+="spleen fevor--脾热"+ "\n" + "\n" 
 
         if (("yellow" in self.color or "yellow" in self.middle) and "thick" in self.fur ):
-            self.body.result+="stomach fevor--胃微热"
+            self.body.result+="stomach fevor--胃微热"+ "\n" + "\n" 
 
         if (("black" in self.color or "black" in self.middle) and \
             "thick" in self.fur and "crack" in self.fur and "dry" in self.moisture):
-            self.body.result+="stomach severe fevor--胃大热"
+            self.body.result+="stomach severe fevor--胃大热"+ "\n" + "\n" 
 
         if (("black" in self.color or "black" in self.middle) and \
             "thick" in self.fur and "crack" in self.fur and \
                 "dry" in self.moisture and "black" in self.body.gum \
                     and "black" in self.body.lips):
-            self.body.result+="stomach severe fevor to broken--胃将蒸烂矣"
+            self.body.result+="stomach severe fevor to broken--胃将蒸烂矣"+ "\n" + "\n" 
 
         if ("red" in self.tip or "burr" in self.tip ):
-            self.body.result+="heart fevor--心热"
+            self.body.result+="heart fevor--心热"+ "\n" + "\n" 
 
         if ("black" in self.color  and "moist" in self.moisture ):
-            self.body.result+="kidney faint--肾虚"
+            self.body.result+="kidney faint--肾虚" + "\n" + "\n" 
 
         if (("red" in self.color  or "purple" in self.color) and "none" in self.fur ):
-            self.body.result+="kidney faint--肾虚"
+            self.body.result+="kidney faint--肾虚"+ "\n" + "\n" 
 
         if ("reflective" in self.color  or ("dry" in self.bottom and "hate cold" in self.body.temperment) ):
-            self.body.result+="kidney faint in severe--肾水亏极"
+            self.body.result+="kidney faint in severe--肾水亏极"+ "\n" + "\n" 
 
         if ("red" in self.side or "burr" in self.side ):
-            self.body.result+="liver fevor--肝热"
+            self.body.result+="liver fevor--肝热"+ "\n" + "\n" 
 
         if ("red" in self.bottom and "thick" in self.fur):
-            self.body.result+="stomach cold turn to severe fevor and lack water--火灼水亏"
+            self.body.result+="stomach cold turn to severe fevor and lack water--火灼水亏"+ "\n" + "\n" 
 
-        self.body.save()
-        return self.body.result
+        # self.body.save()
+        strlist=""
+        strlist=" " + "\n" + self.body.result + "\n" + str("========身體症狀辯證請結合上述舌象判斷==========") + "\n" + "\n"
+        return strlist
 
 class Cases(models.Model):
     facts = models.CharField(max_length=2000,default="nothing",null=True, blank=True)
