@@ -122,6 +122,30 @@ class Cases(models.Model):
             body.result+=self.symptom + "\n" 
             body.result+=self.solution + "\n"+ "\n"+ "\n"
 
+    def case_check_ttgj(self,body,marks):
+
+
+        if (marks == 'ttgj'):
+            factlist=[]
+            factlist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
+            .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('。', ',').split(',')]
+            counter = 0
+            for element in factlist:
+                if element != '' and element in body.general:
+                    counter += 1
+                    # print('match found in')
+                    # print(counter)
+
+            self.marks = counter/len(factlist)
+            if '' in factlist:
+                self.marks = counter/(len(factlist)-1)
+            if self.marks > 0.05:
+                body.result+="========================来源：汤头歌诀=============================="+ "\n"
+                body.result+="可能性 " +str(float(self.marks)*100) + " % \n"
+                body.result+=self.symptom + "\n" 
+                body.result+=self.solution + "\n"+ "\n"+ "\n"
+                body.result+="========================来源：汤头歌诀=============================="+ "\n"+ "\n"
+
 class Person(models.Model):
     body = models.OneToOneField(Body, on_delete=models.CASCADE)
     tongue = models.OneToOneField(Tongue, on_delete=models.CASCADE)
@@ -169,6 +193,8 @@ class Person(models.Model):
                 self.body.result+=(str(resultlist[i])) + "\n"
                 self.body.result+=(solutionlist[i])
 
+# class Symptoms(models.Model):
+#     whole = models.TextField(max_length=20000,default="",null=True, blank=True)
 # class Diagnose:
 #     def check(self, tonge):
 #         if ("white" in tonge.color and "thick" in tonge.fur):

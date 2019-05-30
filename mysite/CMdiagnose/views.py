@@ -55,6 +55,7 @@ def tell(request, person_id):
 def newPerson(request):
     b=Body()
     b.general=''
+    b.general += request.POST['general']
     b.general += request.POST['headt']
     b.general += request.POST['wholet']
     # b.general += request.POST['tongue_t']

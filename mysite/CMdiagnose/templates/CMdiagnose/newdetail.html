@@ -19,8 +19,8 @@
 
 <form action="{% url 'CMdiagnose:new' %}" method="post">
 {% csrf_token %}
-<!-- <label>General Symptoms</label>
-<input type="text" name="general" value=""><br> -->
+<label>General Symptoms</label>
+<input type="text" name="general" value=""><br>
 <h1>舌診</h1>
 <label>舌尖</label>
 <input type="text" id="t_tipt" name="t_tipt" value=""><br>
@@ -78,7 +78,9 @@
 
 <h1>整體</h1>
 <input type="text" id="wholet" name="wholet" value=""><br>
+
   <select multiple='multiple' class='callbacks' name="whole">
+      
       <option value=惡風>惡風</option>
       <option value=惡寒>惡寒</option>
       <option value=發熱>發熱</option>
@@ -95,11 +97,13 @@
       <option value=氣冷>氣冷</option>
       <option value=譫語>譫語</option>
       <option value=赤濁>赤濁</option>
+      <option value=怠惰>怠惰</option>
       <option value=煩躁>煩躁</option>
       <option value=畏風>畏風</option>
       <option value=傷暑風>傷暑風</option>
       <option value=中時疫>中時疫</option>
       <option value=虛勞>虛勞</option>
+      <option value=煩熱>煩熱</option>
       <option value=惡風寒>惡風寒</option>
       <option value=過午便熱>過午便熱</option>
       <option value=寒熱往來>寒熱往來</option>
@@ -116,12 +120,16 @@
       <option value=驚悸>驚悸</option>
       <option value=健忘>健忘</option>
       <option value=虛痛>虛痛</option>
+      <option value=骨蒸>骨蒸</option>
+      
       <option value=怔忡>怔忡</option>
       <option value=身痛>身痛</option>
       <option value=厥脫>厥脫</option>
       <option value=氣閉>氣閉</option>
       <option value=痰閉>痰閉</option>
       <option value=暑閉>暑閉</option>
+      <option value=自汗食少>自汗食少</option>
+      <option value=日晡發熱>日晡發熱（三至五时左右发热）</option>
       <option value=水閉發喘>水閉發喘</option>
       <option value=風閉>風閉</option>
       <option value=為火閉>為火閉</option>
@@ -135,6 +143,9 @@
       <option value=髒毒>髒毒</option>
       <option value=惡寒無汗>惡寒無汗</option>
       <option value=譫語>譫語</option>
+      <option value=食少納呆>食少納呆</option>
+      <option value=倦怠無力>倦怠無力</option>
+      
   </select>
 <!-- 
 <h1>脈象</h1>
@@ -171,6 +182,7 @@
       <option value='面浮腫'>面浮腫</option>
       <option value='眩暈'>眩暈</option>
       <option value='面色痿白'>面色痿白</option>
+      <option value='面色蒼白'>面色蒼白</option>
       <option value='面痛'>面痛</option>
       <option value='黃胖面腫'>黃胖面腫</option>
       <option value='戴陽'>戴陽</option>
@@ -200,6 +212,9 @@
       <option value=鼻塞>鼻塞</option>
       <option value=流清涕>流清涕</option>
       <option value=濃痰>濃痰</option>
+      <option value=咳嗽咽乾>咳嗽咽乾</option>
+      <option value=咳嗽聲不出>咳嗽聲不出</option>
+      
       <option value=咳嗽>咳嗽</option>
       <option value=咽乾>咽乾</option>
       <option value=利清穀>利清穀</option>

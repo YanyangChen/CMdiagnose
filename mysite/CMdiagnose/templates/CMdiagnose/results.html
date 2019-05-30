@@ -1,7 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'CMdiagnose/style.css' %}">
+
 <h1>症狀：</h1>
 
 <p>{{ person.body.general |linebreaks}}</p>
 
 <h1>診斷結果：</h1>
 
-<p>{{ person.body.result |linebreaks}}</p>
+<p>{% autoescape off %}{{ person.body.result |linebreaks}}{% endautoescape %}</p>
