@@ -106,7 +106,7 @@ class Cases(models.Model):
 
         factlist=[]
         factlist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
-        .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('。', ',').split(',')]
+        .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').split(',')]
         counter = 0
         for element in factlist:
             if element != '' and element in body.general:
@@ -128,7 +128,7 @@ class Cases(models.Model):
         if (marks == 'ttgj'):
             factlist=[]
             factlist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
-            .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('。', ',').split(',')]
+            .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').split(',')]
             counter = 0
             for element in factlist:
                 if element != '' and element in body.general:
