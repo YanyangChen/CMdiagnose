@@ -56,35 +56,35 @@ def newPerson(request):
     b=Body()
     b.general=''
     b.general += request.POST['generalt']
-    b.general += request.POST['headt']
-    b.general += request.POST['wholet']
-    # b.general += request.POST['tongue_t']
-    b.general += request.POST['eyet']
-    b.general += request.POST['entt']
-    b.general += request.POST['neckt']
-    b.general += request.POST['backt']
-    b.general += request.POST['chestt']
-    b.general += request.POST['stomacht']
-    b.general += request.POST['lowerpartt']
-    b.general += request.POST['limbst']
-    b.general += request.POST['excrut']
-    b.general += request.POST['sleept']
+    # b.general += request.POST['headt']
+    # b.general += request.POST['wholet']
+    # # b.general += request.POST['tongue_t']
+    # b.general += request.POST['eyet']
+    # b.general += request.POST['entt']
+    # b.general += request.POST['neckt']
+    # b.general += request.POST['backt']
+    # b.general += request.POST['chestt']
+    # b.general += request.POST['stomacht']
+    # b.general += request.POST['lowerpartt']
+    # b.general += request.POST['limbst']
+    # b.general += request.POST['excrut']
+    # b.general += request.POST['sleept']
     b.save()
     t=Tongue(body=b)
 
     
     #get tongue symptoms
-    t.tip += request.POST['t_tipt']
-    # t.root += request.POST['t_roott']
-    t.side += request.POST['t_sidet']
-    t.fur += request.POST['t_furt']
-    t.color += request.POST['t_colort']
-    t.moisture += request.POST['t_moisturet']
-    t.middle += request.POST['t_middlet']
-    t.bottom += request.POST['t_bottomt']
+    # t.tip += request.POST['t_tipt']
+    # # t.root += request.POST['t_roott']
+    # t.side += request.POST['t_sidet']
+    # t.fur += request.POST['t_furt']
+    # t.color += request.POST['t_colort']
+    # t.moisture += request.POST['t_moisturet']
+    # t.middle += request.POST['t_middlet']
+    # t.bottom += request.POST['t_bottomt']
     
-    t_result=''
-    t_result=t.check_()
+    # t_result=''
+    # t_result=t.check_()
 
     #get body symptoms
     
@@ -107,7 +107,7 @@ def newPerson(request):
         
         caselist=Cases.objects.all()
         the_person.body.result=''
-        the_person.body.result=t_result
+        # the_person.body.result=t_result
         for case in caselist:
             case.case_check(the_person.body)
         the_person.body.save()
