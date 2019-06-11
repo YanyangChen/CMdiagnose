@@ -1,0 +1,1 @@
+Cases.objects.filter(symptom__icontains="溫腎祛寒，縮尿止遺。")
