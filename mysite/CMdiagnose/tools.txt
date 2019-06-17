@@ -1,1 +1,21 @@
 Cases.objects.filter(symptom__icontains="溫腎祛寒，縮尿止遺。")
+
+str(soup.find("td", class_="content_board")).find("【性味歸經】")
+str(soup).find("【性味歸經】")
+
+
+
+page = requests.get("http://yibian.hopto.org/yao/?yno=129")
+soup = BeautifulSoup(page.content, 'html.parser')
+
+
+xw=str(soup)[int(str(soup).find("【性味歸經】")): int(str(soup).find("【功效】"))]
+x=str(soup)[int(str(soup).find("【功效】")): int(str(soup).find("【主治】"))]
+x=x[int(x.find("【功效】")): int(x.find("。<p>"))]
+================================================================================
+zz=str(soup)[int(str(soup).find("【主治】")): int(str(soup).find("【文獻別錄】"))]
+wx=str(soup)[int(str(soup).find("【文獻別錄】")): int(str(soup).find("【用法用量】"))]
+jj=str(soup)[int(str(soup).find("【注意禁忌】")): int(str(soup).find("【現代藥理】"))]
+
+xd=str(soup)[int(str(soup).find("【現代藥理】")):]
+xd=xd[int(xd.find("【現代藥理】")): int(xd.find("。<p>"))]
