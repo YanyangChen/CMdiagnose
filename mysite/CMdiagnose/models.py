@@ -200,3 +200,7 @@ class Person(models.Model):
 #         if ("white" in tonge.color and "thick" in tonge.fur):
 #             tonge.body.result="stomach cold--寒邪入胃"
 #             return tonge.body.result
+class Yao(models.Model):
+    name = models.CharField(max_length=200,default="nothing",null=True, blank=True)
+    responses = models.CharField(max_length=2000,default="nothing",null=True, blank=True)
+    properties = models.CharField(max_length=2000,default="nothing",null=True, blank=True)
