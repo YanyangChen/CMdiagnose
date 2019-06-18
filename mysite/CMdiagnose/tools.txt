@@ -120,3 +120,20 @@ for ele in Yao.objects.filter(responses__icontains="<ul><li>"):
      ...:     res=ele.responses.replace("<ul><li>",'')
      ...:     ele.responses=res
      ...:     ele.save()
+
+for ele in Yao.objects.all():
+    res = (ele.responses.replace('【性味歸經】','').replace('【功效】','，').replace('，',',').replace('。',',').replace('、',',').replace('；',','))
+    print(res)
+
+reslist=[]
+for ele in Yao.objects.all():
+        res = (ele.responses.replace('【性味歸經】','').replace('【功效】','，').replace('，',',').replace('。',',').replace('、',',').replace('；',','))
+        reslist += [x.strip() for x in res.split(',')]
+
+
+from pypinyin import lazy_pinyin
+
+reslist.sort(key=lambda reslist: lazy_pinyin(reslist))
+
+for element in reslist:
+    print("<option value=" +"'"+element+"'"+">"+element+"</option>")
