@@ -4,7 +4,7 @@ str(soup.find("td", class_="content_board")).find("【性味歸經】")
 str(soup).find("【性味歸經】")
 
 Yao.objects.filter(properties__icontains="頁首")
-
+Yao.objects.filter(responses__icontains="《")
 
 page = requests.get("http://yibian.hopto.org/yao/?yno=1")
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -98,3 +98,25 @@ for i in range(1, 51):
     xd=xd[int(xd.find("【現代藥理】")): int(xd.find("</li></li></li></li></ol>\n\n"))].replace('</li></li></li></li></ol>\n\n','')
     y=Yao(name=name_, responses=xw+x, properties=zz+jj+xd)
     y.save()
+
+
+    ===========================================
+#########################################################
+
+for ele in Yao.objects.filter(responses__icontains="<table "):
+     ...:     res=ele.responses.replace(ele.responses[ele.responses.find("<table "):],'')
+     ...:     ele.responses=res
+     ...:     ele.save()
+for ele in Yao.objects.filter(responses__icontains="《"):
+     ...:     res=ele.responses.replace(ele.responses[ele.responses.find("《"):],'')
+     ...:     ele.responses=res
+     ...:     ele.save()
+for ele in Yao.objects.filter(responses__icontains="<ol><li>"):
+     ...:     res=ele.responses.replace("<ol><li>",'')
+     ...:     ele.responses=res
+     ...:     ele.save()
+     ...: 
+for ele in Yao.objects.filter(responses__icontains="<ul><li>"):
+     ...:     res=ele.responses.replace("<ul><li>",'')
+     ...:     ele.responses=res
+     ...:     ele.save()
