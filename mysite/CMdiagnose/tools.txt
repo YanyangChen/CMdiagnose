@@ -3,6 +3,7 @@ Cases.objects.filter(symptom__icontains="溫腎祛寒，縮尿止遺。")
 str(soup.find("td", class_="content_board")).find("【性味歸經】")
 str(soup).find("【性味歸經】")
 
+Yao.objects.filter(properties__icontains="頁首")
 
 
 page = requests.get("http://yibian.hopto.org/yao/?yno=1")
@@ -50,7 +51,32 @@ for i in range(1, 51):
     y=Yao(name=name_, responses=xw+x, properties=zz+jj+xd)
     y.save()
 
+for i in range(1, 51):
+    page = requests.get("http://yibian.hopto.org/yao/?yno=" + str(i), proxies={'http': 'proxy5.edb.gov.hk:8080'},timeout=5)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    n=str(soup)[int(str(soup).find("藥名")):]
+    name_=n[int(n.find("<b>")): int(n.find("</b>"))].replace('<b>','')
+    xw=str(soup)[int(str(soup).find("【性味歸經】")): int(str(soup).find("【功效】"))]
+    xw=xw[int(xw.find("【性味歸經】")): int(xw.find("。<p>"))].replace('<p>','')
+    x=str(soup)[int(str(soup).find("【功效】")): int(str(soup).find("【主治】"))]
+    x=x[int(x.find("【功效】")): int(x.find("。<p>"))].replace('<p>','')
+    zz=str(soup)[int(str(soup).find("【主治】")): int(str(soup).find("【文獻別錄】"))]
+    zz=zz[int(zz.find("【主治】")): int(zz.find("。<p>"))].replace('<p>','')
+    jj=str(soup)[int(str(soup).find("【注意禁忌】")): int(str(soup).find("【現代藥理】"))]
+    jj=jj[int(jj.find("【注意禁忌】")): int(jj.find("。<p>"))].replace('<p>','')
+    xd=str(soup)[int(str(soup).find("【現代藥理】")):]
+    xd=xd[int(xd.find("【現代藥理】")): int(xd.find("。<p>"))].replace('<p>','')
+    y=Yao(name=name_, responses=xw+x, properties=zz+jj+xd)
+    y.save()
+====================================
+len(Yao.objects.filter(properties__icontains="頁首"))
+len(Yao.objects.filter(properties__icontains="</li></li></li></li></ul><center>"))
 
+for i in range(1531, 2167):
+    y=Yao.objects.get(pk=i)
+    yy=y.properties.replace(y.properties[y.properties.find("頁首"):],'')
+    y.properties=yy
+    y.save()
 ============
 for i in range(1, 51):
     page = requests.get("http://yibian.hopto.org/yao/?yno=" + str(i),timeout=5)
