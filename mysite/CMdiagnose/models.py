@@ -118,7 +118,7 @@ class Cases(models.Model):
         if '' in factlist:
             self.marks = counter/(len(factlist)-1)
         if self.marks > 0.05:
-            body.result+="可能性 " +str(float(self.marks)*100) + " % \n"
+            body.result+="匹配度 " +str(float(self.marks)*100) + " % \n"
             body.result+=self.symptom.replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.solution.replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
 
@@ -141,7 +141,7 @@ class Cases(models.Model):
                 self.marks = counter/(len(factlist)-1)
             if self.marks > 0.05:
                 body.result+="========================来源：汤头歌诀=============================="+ "\n"
-                body.result+="可能性 " +str(float(self.marks)*100) + " % \n"
+                body.result+="匹配度 " +str(float(self.marks)*100) + " % \n"
                 body.result+=self.symptom + "\n" 
                 body.result+=self.solution + "\n"+ "\n"+ "\n"
                 body.result+="========================来源：汤头歌诀=============================="+ "\n"+ "\n"
@@ -220,6 +220,6 @@ class Yao(models.Model):
         # if '' in factlist:
         #     self.marks = counter/(len(factlist)-1)
         if self.marks > 0.05:
-            body.result+=self.name + "可能性 " +str(float(self.marks)*100) + " % \n"
+            body.result+=self.name + "匹配度 " +str(float(self.marks)*100) + " % \n"
             body.result+=self.responses.replace('center','p').replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.properties.replace('center','p').replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
