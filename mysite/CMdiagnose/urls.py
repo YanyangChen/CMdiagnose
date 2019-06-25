@@ -11,5 +11,6 @@ urlpatterns = [
     path('newy/', views.newYao, name='newy'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
+    path('<int:pk>/resultsy/', views.ResultsYao.as_view(), name='resultsy'),
     path('<int:person_id>/tell/', views.tell, name='tell'),
 ]

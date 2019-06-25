@@ -207,7 +207,7 @@ class Yao(models.Model):
     def yao_check(self,body):
 
         factlist=[]
-        factlist=[x.strip() for x in str(self.responses).replace('【性味歸經】', '').replace('【功效】','')\
+        factlist=[x.strip() for x in str(self.responses).replace('【性味歸經】', '').replace('【功效】',',')\
         .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
         counter = 0
         for element in factlist:

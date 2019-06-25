@@ -26,6 +26,10 @@ class ResultsView(generic.DetailView):
     model = Person
     template_name = 'CMdiagnose/results.html'
 
+class ResultsYao(generic.DetailView):
+    model = Person
+    template_name = 'CMdiagnose/resultsyao.html'
+
 class IndexView(generic.ListView):
     template_name = 'CMdiagnose/index.html'
     context_object_name = 'Person_list'
@@ -161,7 +165,7 @@ def newYao(request):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('CMdiagnose:results', args=(the_person.id,)))
+        return HttpResponseRedirect(reverse('CMdiagnose:resultsy', args=(the_person.id,)))
 
 
 
