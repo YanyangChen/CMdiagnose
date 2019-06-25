@@ -204,3 +204,22 @@ class Yao(models.Model):
     name = models.CharField(max_length=200,default="nothing",null=True, blank=True)
     responses = models.CharField(max_length=2000,default="nothing",null=True, blank=True)
     properties = models.CharField(max_length=2000,default="nothing",null=True, blank=True)
+    def yao_check(self,body):
+
+        factlist=[]
+        factlist=[x.strip() for x in str(self.responses).replace('【性味歸經】', '').replace('【功效】','')\
+        .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
+        counter = 0
+        for element in factlist:
+            if element != '' and element in body.general:
+                counter += 1
+                # print('match found in')
+                # print(counter)
+
+        self.marks = counter/len(factlist)
+        # if '' in factlist:
+        #     self.marks = counter/(len(factlist)-1)
+        if self.marks > 0.05:
+            body.result+=self.name + "可能性 " +str(float(self.marks)*100) + " % \n"
+            body.result+=self.responses.replace('center','p').replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
+            body.result+=self.properties.replace('center','p').replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
