@@ -130,7 +130,7 @@ class Cases(models.Model):
         factlist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
         .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
         reflist=[]
-        reflist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
+        reflist=[x.strip() for x in str(str(self.solution)+str(self.reference)).replace('其症', '').replace('之症','').replace('症', '')\
         .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
         genlist=[]
         genlist=[x.strip() for x in str(body.general).split(',')]
