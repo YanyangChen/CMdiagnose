@@ -130,6 +130,44 @@ def newPerson(request):
 # def index(request):
 #     return HttpResponse("欢迎光临笔花医镜电子诊断系统")
 
+def newPersonExt(request):
+    b=Body()
+    b.general=''
+    b.general += request.POST['generext']
+
+    b.save()
+    t=Tongue(body=b)
+
+    
+    t.save()
+    
+    try:
+
+        the_person = Person(body=b,tongue=t)
+        # the_person.body.general = request.POST['general']
+        # the_person = person.get(pk=request.POST['choice'])
+    except (KeyError, the_person.DoesNotExist):
+        # Redisplay the person telling form.
+        return render(request, 'CMdiagnose/detail.html', {
+            'person': person,
+            'error_message': "You didn't submit any symptoms.",
+        })
+    else:
+        print (the_person.body.general)
+        
+        caselist=Cases.objects.all()
+        the_person.body.result=''
+        # the_person.body.result=t_result
+        for case in caselist:
+            case.case_checkext(the_person.body)
+        the_person.body.save()
+        the_person.tongue.save()
+        the_person.save()
+
+        return HttpResponseRedirect(reverse('CMdiagnose:results', args=(the_person.id,)))
+
+
+
 
 def newYao(request):
     b=Body()
@@ -159,6 +197,43 @@ def newYao(request):
         # the_person.body.result=t_result
         for yao in yaolist:
             yao.yao_check(the_person.body)
+        the_person.body.save()
+        the_person.tongue.save()
+        the_person.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('CMdiagnose:resultsy', args=(the_person.id,)))
+
+
+def newYaoExt(request):
+    b=Body()
+    b.general=''
+    b.general += request.POST['generext']
+    b.save()
+    t=Tongue(body=b)
+
+    t.save()
+    
+    try:
+
+        the_person = Person(body=b,tongue=t)
+        # the_person.body.general = request.POST['general']
+        # the_person = person.get(pk=request.POST['choice'])
+    except (KeyError, the_person.DoesNotExist):
+        # Redisplay the person telling form.
+        return render(request, 'CMdiagnose/detail.html', {
+            'person': person,
+            'error_message': "You didn't submit any symptoms.",
+        })
+    else:
+        print (the_person.body.general)
+        
+        yaolist=Yao.objects.all()
+        the_person.body.result=''
+        # the_person.body.result=t_result
+        for yao in yaolist:
+            yao.yao_checkext(the_person.body)
         the_person.body.save()
         the_person.tongue.save()
         the_person.save()

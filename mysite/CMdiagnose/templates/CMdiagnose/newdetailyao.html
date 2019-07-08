@@ -913,4 +913,10 @@ $('.searchable[name=general]').multiSelect({
 <input type="submit" value="get result">
 </form>
 
+<form action="{% url 'CMdiagnose:newyext' %}" method="post">
+  {% csrf_token %}
+  <label>General Symptoms</label>
+  <input type="text" id="generext" name="generext" value=""><br>
+  <input type="submit" value="get search result">
+</form>
 

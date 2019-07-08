@@ -122,6 +122,40 @@ class Cases(models.Model):
             body.result+=self.symptom.replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.solution.replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
             body.result+="================================================================="+ "\n"
+
+
+    def case_checkext(self,body):
+
+        factlist=[]
+        factlist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
+        .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
+        reflist=[]
+        reflist=[x.strip() for x in str(self.facts).replace('其症', '').replace('之症','').replace('症', '')\
+        .replace('為', '').replace('脈必','').replace('脈','').replace('必','').replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
+        genlist=[]
+        genlist=[x.strip() for x in str(body.general).split(',')]
+        counter = 0
+        for element in factlist:
+            for genele in genlist:
+                if genele != '' and element != '' and genele in element:
+                    counter += 1
+                    # print('match found in')
+                    # print(counter)
+        for element in reflist:
+            for genele in genlist:
+                if genele != '' and element != '' and genele in element:
+                    counter += 1
+        # self.marks = counter/len(factlist)
+        # if '' in factlist:
+        #     self.marks = counter/(len(factlist))
+        # if self.marks > 0.05:
+        if counter > 0:
+            # body.result+="匹配度 " +str(float(self.marks)*100) + " % \n"
+            body.result+=self.symptom.replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
+            body.result+=self.solution.replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
+            body.result+="================================================================="+ "\n"
+
+
     def case_check_ttgj(self,body,marks):
 
 
@@ -221,5 +255,36 @@ class Yao(models.Model):
         #     self.marks = counter/(len(factlist)-1)
         if self.marks > 0.05:
             body.result+=self.name + "匹配度 " +str(float(self.marks)*100) + " % \n"
+            body.result+=self.responses.replace('center','p').replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
+            body.result+=self.properties.replace('center','p').replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
+
+
+    def yao_checkext(self,body):
+
+        factlist=[]
+        factlist=[x.strip() for x in str(self.responses).replace('【性味歸經】', '').replace('【功效】',',')\
+        .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
+        reflist=[]
+        reflist=[x.strip() for x in str(self.properties).replace('【性味歸經】', '').replace('【功效】',',')\
+        .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
+        genlist=[]
+        genlist=[x.strip() for x in str(body.general).split(',')]
+        counter = 0
+        for element in factlist:
+            for genele in genlist:
+                if genele != '' and element != '' and genele in element:
+                    counter += 1
+                    # print('match found in')
+                    # print(counter)
+        for element in reflist:
+            for genele in genlist:
+                if genele != '' and element != '' and genele in element:
+                    counter += 1
+        # self.marks = counter/len(factlist)
+        # if '' in factlist:
+        #     self.marks = counter/(len(factlist))
+        # if self.marks > 0.05:
+        if counter > 0:
+            body.result+="================= "+self.name + " ================= "
             body.result+=self.responses.replace('center','p').replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.properties.replace('center','p').replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
