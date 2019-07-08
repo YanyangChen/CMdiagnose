@@ -116,12 +116,12 @@ class Cases(models.Model):
 
         self.marks = counter/len(factlist)
         if '' in factlist:
-            self.marks = counter/(len(factlist)-1)
+            self.marks = counter/(len(factlist))
         if self.marks > 0.05:
             body.result+="匹配度 " +str(float(self.marks)*100) + " % \n"
             body.result+=self.symptom.replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.solution.replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
-
+            body.result+="================================================================="+ "\n"
     def case_check_ttgj(self,body,marks):
 
 
