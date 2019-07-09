@@ -3,9 +3,9 @@ import time
 from bs4 import BeautifulSoup
 from CMdiagnose.models import Cases
 #9271
-for k in range(0, int((9250-3601)/50)):
-    for i in range(3601+k*50, 3601+(k+1)*50):
-        page = requests.get("http://yibian.hopto.org/wang/?wno=" + str(i), timeout=5)
+for k in range(0, int((9250-9038)/50)):
+    for i in range(9038+k*50, 9038+(k+1)*50):
+        page = requests.get("http://yibian.hopto.org/wang/?wno=" + str(i), proxies={'http': 'proxy1.edb.gov.hk:8080'},timeout=5)
         soup = BeautifulSoup(page.content, 'html.parser')
         n=str(soup)[int(str(soup).find("方名")):]
         name_=n[int(n.find("方名</td>\n<th align=\"left\" nowrap=\"\">")): int(n.find("</th>"))].replace('方名</td>\n<th align=\"left\" nowrap=\"\">','')
@@ -26,4 +26,4 @@ for k in range(0, int((9250-3601)/50)):
         y=Cases(solution=name_+" "+zf, facts=fcts, symptom=smpt, reference=fy+xd)
         y.save()
         print(str(i) + " finished")
-    time.sleep(20)
+    time.sleep(25)
