@@ -5,6 +5,7 @@ from CMdiagnose.models import Cases
 #9271
 for k in range(0, int((9250-9038)/50)):
     for i in range(9038+k*50, 9038+(k+1)*50):
+    for i in range(9238, 9271):
         page = requests.get("http://yibian.hopto.org/wang/?wno=" + str(i), proxies={'http': 'proxy1.edb.gov.hk:8080'},timeout=5)
         soup = BeautifulSoup(page.content, 'html.parser')
         n=str(soup)[int(str(soup).find("方名")):]

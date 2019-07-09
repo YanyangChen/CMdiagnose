@@ -5,7 +5,7 @@ from django.template import loader
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
-from .models import Body, Tongue, Person, Cases, Yao
+from .models import Body, Tongue, Person, Cases, Yao, Xue
 
 class NewDetailView(generic.TemplateView):
     # https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView
@@ -29,6 +29,10 @@ class ResultsView(generic.DetailView):
 class ResultsYao(generic.DetailView):
     model = Person
     template_name = 'CMdiagnose/resultsyao.html'
+
+class ResultsXue(generic.DetailView):
+    model = Person
+    template_name = 'CMdiagnose/resultsxue.html'
 
 class IndexView(generic.ListView):
     template_name = 'CMdiagnose/index.html'
@@ -244,5 +248,39 @@ def newYaoExt(request):
 
 
 
+def newXue(request):
+    b=Body()
+    b.general=''
+    b.general += request.POST['generex']
+    b.save()
+    t=Tongue(body=b)
 
+    t.save()
+    
+    try:
+
+        the_person = Person(body=b,tongue=t)
+        # the_person.body.general = request.POST['general']
+        # the_person = person.get(pk=request.POST['choice'])
+    except (KeyError, the_person.DoesNotExist):
+        # Redisplay the person telling form.
+        return render(request, 'CMdiagnose/detail.html', {
+            'person': person,
+            'error_message': "You didn't submit any symptoms.",
+        })
+    else:
+        print (the_person.body.general)
+        
+        xuelist=Xue.objects.all()
+        the_person.body.result=''
+        # the_person.body.result=t_result
+        for xue in xuelist:
+            xue.xue_checkext(the_person.body)
+        the_person.body.save()
+        the_person.tongue.save()
+        the_person.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('CMdiagnose:resultsxue', args=(the_person.id,)))
 

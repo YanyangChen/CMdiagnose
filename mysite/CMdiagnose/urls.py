@@ -9,10 +9,12 @@ urlpatterns = [
     path('createy/', views.NewDetailYao.as_view(), name='newdetailyao'),
     path('new/', views.newPerson, name='new'),
     path('newext/', views.newPersonExt, name='newext'),
+    path('newx/', views.newXue, name='newx'),
     path('newy/', views.newYao, name='newy'),
     path('newyext/', views.newYaoExt, name='newyext'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:pk>/resultsy/', views.ResultsYao.as_view(), name='resultsy'),
+    path('<int:pk>/resultsxue/', views.ResultsXue.as_view(), name='resultsxue'),
     path('<int:person_id>/tell/', views.tell, name='tell'),
 ]

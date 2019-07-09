@@ -920,3 +920,9 @@ $('.searchable[name=general]').multiSelect({
   <input type="submit" value="get search result">
 </form>
 
+<form action="{% url 'CMdiagnose:newx' %}" method="post">
+  {% csrf_token %}
+  <label>General Symptoms for Xue</label>
+  <input type="text" id="generex" name="generex" value=""><br>
+  <input type="submit" value="get search result">
+</form>
