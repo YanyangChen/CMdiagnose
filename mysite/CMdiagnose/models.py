@@ -344,3 +344,6 @@ class Xue(models.Model):
             body.result+="================= "+self.name + " ================= "
             body.result+=self.responses.replace('center','p').replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.properties.replace('center','p').replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n" + "</li>" + "</ul>"
+        
+        # print(set(genlist))
+

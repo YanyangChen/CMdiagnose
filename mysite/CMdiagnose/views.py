@@ -164,6 +164,12 @@ def newPersonExt(request):
         # the_person.body.result=t_result
         for case in caselist:
             case.case_checkext(the_person.body)
+
+        genlist=[]
+        genlist=[x.strip() for x in str(b.general).split(',')]
+        for genele in set(genlist):
+            the_person.body.result=the_person.body.result.replace(genele,'<mg>'+genele+'</mg>')
+            
         the_person.body.save()
         the_person.tongue.save()
         the_person.save()
@@ -238,6 +244,11 @@ def newYaoExt(request):
         # the_person.body.result=t_result
         for yao in yaolist:
             yao.yao_checkext(the_person.body)
+
+        genlist=[]
+        genlist=[x.strip() for x in str(b.general).split(',')]
+        for genele in set(genlist):
+            the_person.body.result=the_person.body.result.replace(genele,'<mg>'+genele+'</mg>')
         the_person.body.save()
         the_person.tongue.save()
         the_person.save()
@@ -276,6 +287,11 @@ def newXue(request):
         # the_person.body.result=t_result
         for xue in xuelist:
             xue.xue_checkext(the_person.body)
+
+        genlist=[]
+        genlist=[x.strip() for x in str(b.general).split(',')]
+        for genele in set(genlist):
+            the_person.body.result=the_person.body.result.replace(genele,'<mg>'+genele+'</mg>')
         the_person.body.save()
         the_person.tongue.save()
         the_person.save()
