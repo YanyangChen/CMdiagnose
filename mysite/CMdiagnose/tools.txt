@@ -4,6 +4,7 @@ from CMdiagnose.models import Cases
 from CMdiagnose.models import Xue
 
 Cases.objects.filter(symptom__icontains="溫腎祛寒，縮尿止遺。")
+Cases.objects.filter(solution__icontains="獨參湯")
 Yao.objects.filter(properties__icontains="癌")
 Yao.objects.filter(properties__icontains="關節")
 str(soup.find("td", class_="content_board")).find("【性味歸經】")
