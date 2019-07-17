@@ -328,13 +328,13 @@ class Xue(models.Model):
         counter = 0
         for element in factlist:
             for genele in genlist:
-                if genele != '' and element != '' and genele in element:
+                if (genele != '' and element != '' and genele in element) or genele in self.name:
                     counter += 1
                     # print('match found in')
                     # print(counter)
         for element in reflist:
             for genele in genlist:
-                if genele != '' and element != '' and genele in element:
+                if (genele != '' and element != '' and genele in element) or genele in self.name:
                     counter += 1
         # self.marks = counter/len(factlist)
         # if '' in factlist:

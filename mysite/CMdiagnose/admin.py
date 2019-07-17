@@ -6,12 +6,23 @@ class CasesAdmin(admin.ModelAdmin):
 
     list_display=('pk','solution','symptom','facts')
     search_fields = ('solution', 'symptom', 'facts')
+
+class XueAdmin(admin.ModelAdmin):
+
+    list_display=('pk','name','responses','properties')
+    search_fields = ('name', 'responses', 'properties')
+
+class YaoAdmin(admin.ModelAdmin):
+
+    list_display=('pk','name','responses','properties')
+    search_fields = ('name', 'responses', 'properties')
+
 admin.site.register(Person)
 admin.site.register(Tongue)
 admin.site.register(Body)
 # admin.site.register(Cases)
-admin.site.register(Yao)
-admin.site.register(Xue)
+admin.site.register(Yao, YaoAdmin)
+admin.site.register(Xue, XueAdmin)
 admin.site.register(Cases, CasesAdmin)
 
 
