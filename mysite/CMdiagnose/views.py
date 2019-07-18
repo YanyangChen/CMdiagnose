@@ -38,8 +38,14 @@ class ResultsXue(generic.DetailView):
     model = Person
     template_name = 'CMdiagnose/resultsxue.html'
 
-class IndexView(generic.ListView):
+class BootIndexView(generic.ListView):
     template_name = 'CMdiagnose/index.html'
+    context_object_name = 'Person_list'
+    def get_queryset(self):
+        return Person.objects.all()
+
+class IndexView(generic.ListView):
+    template_name = 'CMdiagnose/index2.html'
     context_object_name = 'Person_list'
     def get_queryset(self):
         return Person.objects.all()

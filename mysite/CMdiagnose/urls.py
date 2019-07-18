@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'CMdiagnose'
 urlpatterns = [
+    path('index', views.BootIndexView.as_view(), name='bootindex'),
     path('', views.IndexView.as_view(), name='index'),
     path('create1/', views.NewDetailView.as_view(), name='newdetail'),
     path('createy/', views.NewDetailYao.as_view(), name='newdetailyao'),
