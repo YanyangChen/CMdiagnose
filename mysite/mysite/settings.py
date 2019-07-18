@@ -25,7 +25,7 @@ SECRET_KEY = 'bp-c%bl%^lwkv20-gvbotsa*yj6s*!!0jaq68z84$=ofsu!uc('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
