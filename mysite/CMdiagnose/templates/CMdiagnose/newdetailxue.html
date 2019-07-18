@@ -15,7 +15,10 @@
 
   <p>本資料庫的內容來源繁雜，不及備載，僅供學術參考，不作商業用途，其著作權各歸其原作者或其出版社所有。若有真實疾患請尋求合法醫師，非中醫師請勿擅自處方服藥。</p>
   <br>
-
+  <div>
+      簡繁轉化
+      <a id="translateLink" style="margin-top:-6px;" class="btn btn-success pull-left" href="javascript:translatePage();">简体</a>
+  </div>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <form action="{% url 'CMdiagnose:newx' %}" method="post">
@@ -3536,13 +3539,14 @@
   <!-- Bootstrap JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
   <script src="{% static 'CMdiagnose/multi-select/js/jquery.multi-select.js' %}"></script>
+  <script src="/static/CMdiagnose/js/FontChange.js"></script>
   <script type="text/javascript">
   // run pre selected options
 
 
 
 $('.searchable[name=general]').multiSelect({
-  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='嘗試輸入 \"熱\"'>",
+  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='嘗試輸入 \"炎\"'>",
   selectionHeader: "<input type='text' class='search-input' autocomplete='off'>",
   afterInit: function(ms){
     var that = this,

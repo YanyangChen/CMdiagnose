@@ -45,6 +45,10 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'CMdiagnose:newdetail' %}">方劑搜索</a>
           </li>
+          <div>
+              簡繁轉化
+              <a id="translateLink" style="margin-top:-6px;" class="btn btn-success pull-right" href="javascript:translatePage();">简体</a>
+          </div>
         </ul>
       </div>
     </div>
@@ -201,7 +205,7 @@
           <i class="fab fa-twitter"></i>
         </a>
         <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-q-f"></i>
         </a>
         <a href="#" class="mx-2">
           <i class="fab fa-github"></i>
@@ -224,7 +228,7 @@
 
   <!-- Plugin JavaScript -->
   <script src="/static/CMdiagnose/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+  <script src="/static/CMdiagnose/js/FontChange.js"></script>
   <!-- Custom scripts for this template -->
   <script src="/static/CMdiagnose/js/grayscale.min.js"></script>
 
