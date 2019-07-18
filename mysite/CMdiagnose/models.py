@@ -269,6 +269,7 @@ class Yao(models.Model):
         .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
         genlist=[]
         genlist=[x.strip() for x in str(body.general).split(',')]
+        genlist = [i for i in genlist if i]
         counter = 0
         for element in factlist:
             for genele in genlist:
@@ -325,6 +326,7 @@ class Xue(models.Model):
         .replace('，', ',').replace('、', ',').replace('。', ',').replace('.', ',').split(',')]
         genlist=[]
         genlist=[x.strip() for x in str(body.general).split(',')]
+        genlist = [i for i in genlist if i] 
         counter = 0
         for element in factlist:
             for genele in genlist:

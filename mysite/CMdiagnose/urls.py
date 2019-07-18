@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('create1/', views.NewDetailView.as_view(), name='newdetail'),
     path('createy/', views.NewDetailYao.as_view(), name='newdetailyao'),
+    path('createx/', views.NewDetailXue.as_view(), name='newdetailxue'),
     path('new/', views.newPerson, name='new'),
     path('newext/', views.newPersonExt, name='newext'),
     path('newx/', views.newXue, name='newx'),

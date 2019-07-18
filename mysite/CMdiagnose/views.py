@@ -17,6 +17,10 @@ class NewDetailYao(generic.TemplateView):
     
     template_name = 'CMdiagnose/newdetailyao.html'
 
+class NewDetailXue(generic.TemplateView):
+    
+    template_name = 'CMdiagnose/newdetailxue.html'
+
 class DetailView(generic.DetailView):
     model = Person
     template_name = 'CMdiagnose/detail.html'
@@ -247,6 +251,7 @@ def newYaoExt(request):
 
         genlist=[]
         genlist=[x.strip() for x in str(b.general).split(',')]
+        genlist = [i for i in genlist if i] 
         for genele in set(genlist):
             the_person.body.result=the_person.body.result.replace(genele,'<mg>'+genele+'</mg>')
         the_person.body.save()
@@ -290,6 +295,8 @@ def newXue(request):
 
         genlist=[]
         genlist=[x.strip() for x in str(b.general).split(',')]
+        genlist = [i for i in genlist if i] 
+        # print(genlist)
         for genele in set(genlist):
             the_person.body.result=the_person.body.result.replace(genele,'<mg>'+genele+'</mg>')
         the_person.body.save()
