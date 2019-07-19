@@ -87,7 +87,8 @@ def newPerson(request):
     # t.save()
     
     try:
-        the_person = get_object_or_404(Person, pk=588)
+        # the_person = get_object_or_404(Person, pk=588)
+        the_person=Person.objects.all()[:1].get()
         the_person.body.general=''
         the_person.body.general = request.POST['generalt']
         # the_person = Person(body=b,tongue=t)
@@ -131,7 +132,7 @@ def newPersonExt(request):
     
     try:
 
-        the_person = get_object_or_404(Person, pk=588)
+        the_person=Person.objects.all()[:1].get()
         the_person.body.general=''
         the_person.body.general = request.POST['generext']
         # the_person.body.general = request.POST['general']
@@ -177,7 +178,7 @@ def newYao(request):
     
     try:
 
-        the_person = get_object_or_404(Person, pk=588)
+        the_person=Person.objects.all()[:1].get()
         the_person.body.general=''
         the_person.body.general = request.POST['generalt']
         # the_person.body.general = request.POST['general']
@@ -216,7 +217,7 @@ def newYaoExt(request):
     
     try:
 
-        the_person = get_object_or_404(Person, pk=588)
+        the_person=Person.objects.all()[:1].get()
         the_person.body.general=''
         the_person.body.general = request.POST['generext']
         # the_person = person.get(pk=request.POST['choice'])
@@ -260,7 +261,7 @@ def newXue(request):
     # t.save()
     
     try:
-        the_person = get_object_or_404(Person, pk=588)
+        the_person=Person.objects.all()[:1].get()
         the_person.body.general=''
         the_person.body.general += request.POST['generex']
         # the_person = Person(body=b,tongue=t)
