@@ -45,10 +45,10 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'CMdiagnose:newdetail' %}">方劑搜索</a>
           </li>
-          <div>
-              簡繁轉化
-              <a id="translateLink" style="margin-top:-6px;" class="btn btn-success pull-right" href="javascript:translatePage();">简体</a>
-          </div>
+          <li class="nav-item">
+            <a class="btn btn-primary js-scroll-trigger" href="#about">免責聲明</a>
+          </li>
+          
         </ul>
       </div>
     </div>
@@ -58,9 +58,12 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">仁毅堂</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">免費，乾淨，與時俱進的中醫資料检索站</h2>
-        <a href="#about" class="btn btn-primary js-scroll-trigger">免責聲明</a>
+        <!-- <h1 class="mx-auto my-0 text-uppercase">仁毅精誠</h1> -->
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">免費，乾淨，清晰易用的中醫資料检索站</h2>
+        <a class="btn btn-primary js-scroll-trigger" href="{% url 'CMdiagnose:newdetailxue' %}">穴位搜索</a>
+        <a class="btn btn-primary js-scroll-trigger" href="{% url 'CMdiagnose:newdetailyao' %}">中藥搜索</a>
+        <a class="btn btn-primary js-scroll-trigger" href="{% url 'CMdiagnose:newdetail' %}">方劑搜索</a>
+        <!-- <a href="#about" class="btn btn-primary js-scroll-trigger">免責聲明</a> -->
       </div>
     </div>
   </header>
@@ -140,7 +143,7 @@
   </section>
 
   <!-- Signup Section -->
-  <section id="signup" class="signup-section">
+  <!-- <section id="signup" class="signup-section">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-lg-8 mx-auto text-center">
@@ -156,10 +159,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Contact Section -->
-  <section class="contact-section bg-black">
+  <!-- <section class="contact-section bg-black">
     <div class="container">
 
       <div class="row">
@@ -215,12 +218,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
+   Footer -->
+  <!-- <footer class="bg-black small text-center text-white-50">
     <div class="container">
       Copyright &copy; Your Website 2019
     </div>
-  </footer>
+  </footer> --> 
 
   <!-- Bootstrap core JavaScript -->
   <script src="/static/CMdiagnose/vendor/jquery/jquery.min.js"></script>

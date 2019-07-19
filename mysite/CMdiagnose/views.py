@@ -88,6 +88,7 @@ def newPerson(request):
     
     try:
         the_person = get_object_or_404(Person, pk=588)
+        the_person.body.general=''
         the_person.body.general = request.POST['generalt']
         # the_person = Person(body=b,tongue=t)
         # the_person.body.general = request.POST['general']
@@ -131,6 +132,7 @@ def newPersonExt(request):
     try:
 
         the_person = get_object_or_404(Person, pk=588)
+        the_person.body.general=''
         the_person.body.general = request.POST['generext']
         # the_person.body.general = request.POST['general']
         # the_person = person.get(pk=request.POST['choice'])
@@ -176,6 +178,7 @@ def newYao(request):
     try:
 
         the_person = get_object_or_404(Person, pk=588)
+        the_person.body.general=''
         the_person.body.general = request.POST['generalt']
         # the_person.body.general = request.POST['general']
         # the_person = person.get(pk=request.POST['choice'])
@@ -214,6 +217,7 @@ def newYaoExt(request):
     try:
 
         the_person = get_object_or_404(Person, pk=588)
+        the_person.body.general=''
         the_person.body.general = request.POST['generext']
         # the_person = person.get(pk=request.POST['choice'])
     except (KeyError, the_person.DoesNotExist):
@@ -257,6 +261,7 @@ def newXue(request):
     
     try:
         the_person = get_object_or_404(Person, pk=588)
+        the_person.body.general=''
         the_person.body.general += request.POST['generex']
         # the_person = Person(body=b,tongue=t)
         # the_person.body.general = request.POST['general']
