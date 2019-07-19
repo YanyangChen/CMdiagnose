@@ -22,10 +22,10 @@
   </div>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'CMdiagnose:new' %}" method="post">
+<form action="{% url 'CMdiagnose:newext' %}" method="post">
 {% csrf_token %}
 <label>General Symptoms</label>
-<input type="text" id="generalt" name="generalt" value=""><br>
+<input type="text" id="generext" name="generext" value=""><br>
 <select multiple='multiple' class='searchable' name="general">
   <option value=噯氣泛酸>噯氣泛酸</option>
   <option value=按胸則痛>按胸則痛</option>
@@ -1427,7 +1427,7 @@ $('.searchable[name=general]').multiSelect({
     this.qs1.cache();
     this.qs2.cache();
     alert("Select value: "+values);
-    document.getElementById("generalt").value += values + "," ;
+    document.getElementById("generext").value += values + "," ;
   },
 
   afterDeselect: function(){
@@ -1442,12 +1442,12 @@ $('.searchable[name=general]').multiSelect({
   
 <input type="submit" value="載入">
 </form>
-<form action="{% url 'CMdiagnose:newext' %}" method="post">
+<!-- <form action="{% url 'CMdiagnose:newext' %}" method="post">
   {% csrf_token %}
 
   <label>Extreme Search by Symptoms</label>
   <input type="text" id="generext" name="generext" value=""><br>
   <input type="submit" value="載入">
-</form>
+</form> -->
 
 </body>

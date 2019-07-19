@@ -151,9 +151,13 @@ class Cases(models.Model):
         # if self.marks > 0.05:
         if counter > 0:
             # body.result+="匹配度 " +str(float(self.marks)*100) + " % \n"
+            if("【" in self.solution):
+                body.result+="============================"+ self.solution.replace(self.solution[int(self.solution.find("【")):],'') +"====================================="+ "\n"
+            else:
+                body.result+="================================================================="+ "\n"
             body.result+=self.symptom.replace('【','\n\n【').replace('】','】\n') + "\n\n\n" 
             body.result+=self.solution.replace('【','\n【').replace('】','】\n') + "\n"+ "\n"+ "\n"
-            body.result+="================================================================="+ "\n"
+            # body.result+="================================================================="+ "\n"
 
 
     def case_check_ttgj(self,body,marks):
