@@ -200,3 +200,8 @@ c=Cases.objects.filter(facts__icontains="頁首")
 for ele in c:
     ele.facts=ele.facts.replace(ele.facts[ele.facts.find("table"):],'').replace('<br>','').replace('br/','').replace('br','').replace('<','').replace('>','')
     ele.save()
+
+s=C.solution 
+while ("href" in C.solution):
+    C.solution=C.solution.replace(C.solution[C.solution.find("<a href"):C.solution.find(">")],"").replace("</a>","")
+    print("href" in C.solution)
