@@ -1,3 +1,4 @@
+from rest_framework import generics
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -6,6 +7,10 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 from .models import Body, Tongue, Person, Cases, Yao, Xue
+from .serializers import XueSerializer
+
+
+
 
 class NewDetailView(generic.TemplateView):
     # https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView
@@ -319,3 +324,13 @@ def newXue(request):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('CMdiagnose:resultsxue', args=(the_person.id,)))
+
+
+class ListXue(generics.ListCreateAPIView):
+    queryset = Xue.objects.all()
+    serializer_class = XueSerializer
+
+
+class DetailXue(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Xue.objects.all()
+    serializer_class = XueSerializer
