@@ -3,6 +3,10 @@
     <ul>
         {% for xue in xues %}
         <li>{{ xue.name }}</li>
+        {% autoescape off %}
+        <li>{{ xue.properties }}</li>
+        <li>{{ xue.responses }}</li>
+        {% endautoescape %}
         {% endfor %}
     </ul>
     </body></html>

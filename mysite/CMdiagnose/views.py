@@ -459,11 +459,38 @@ def newXue2(request):
         the_person.body.save()
         the_person.tongue.save()
         the_person.save()
+    
+        # queryset = Xue.objects.all()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('CMdiagnose:resultsxue', args=(the_person.id,)))
+        
+        # return Response({'xues': queryset})
 
+class XueList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/xueprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        if name is not None:
+            queryset = Xue.objects.filter(name__icontains=name)
+            return Response({'xues': queryset})
+
+
+class YaoList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/yaoprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        print(name)
+        if name is not None:
+            queryset = Yao.objects.filter(name__icontains=name)
+            return Response({'yaos': queryset})
 
 class ListXue(generics.ListCreateAPIView):
     queryset = Xue.objects.all()

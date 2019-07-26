@@ -1,0 +1,12 @@
+<html><body>
+    <h1>Yaos</h1>
+    <ul>
+        {% for yao in yaos %}
+        <li>{{ yao.name }}</li>
+        {% autoescape off %}
+        <li>{{ yao.properties }}</li>
+        <li>{{ yao.responses }}</li>
+        {% endautoescape %}
+        {% endfor %}
+    </ul>
+    </body></html>
