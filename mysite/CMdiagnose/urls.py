@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework import routers
 
 from . import views
 
@@ -20,6 +21,8 @@ urlpatterns = [
     path('<int:pk>/resultsxue/', views.ResultsXue.as_view(), name='resultsxue'),
     path('<int:person_id>/tell/', views.tell, name='tell'),
     path('listxue', views.ListXue.as_view()),
+    path('xue/<name>/', views.MatchXue.as_view()),
     path('listxue/<int:pk>/', views.DetailXue.as_view()),
     
 ]
+

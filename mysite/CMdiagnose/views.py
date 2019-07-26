@@ -330,6 +330,28 @@ class ListXue(generics.ListCreateAPIView):
     queryset = Xue.objects.all()
     serializer_class = XueSerializer
 
+class MatchXue(generics.ListAPIView):
+    
+    serializer_class = XueSerializer
+
+    def get_queryset(self):
+        """
+        We can override .get_queryset() to deal with URLs such
+         as http://example.com/api/purchases?username=denvercoder9, 
+         and filter the queryset only if the username parameter is included in the URL:
+        
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        # print("into function")
+        # print(self.kwargs['name'])
+        queryset = Xue.objects.all()
+        name = self.kwargs['name']
+        # print("into function2")
+        if name is not None:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
+
 
 class DetailXue(generics.RetrieveUpdateDestroyAPIView):
     queryset = Xue.objects.all()
