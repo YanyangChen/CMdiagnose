@@ -11,9 +11,12 @@ urlpatterns = [
     path('createy/', views.NewDetailYao.as_view(), name='newdetailyao'),
     path('createx/', views.NewDetailXue.as_view(), name='newdetailxue'),
     path('new/', views.newPerson, name='new'),
-    path('newext/', views.newPersonExt, name='newext'),
+    path('newext/', views.newCasesExt, name='newext'),
+    path('searchc/', views.newCasesExt2, name='newext2'),
     path('newx/', views.newXue, name='newx'),
+    path('searchx/', views.newXue2, name='newx2'),
     path('newy/', views.newYao, name='newy'),
+    path('searchy/', views.newYaoExt2, name='newyext2'),
     path('newyext/', views.newYaoExt, name='newyext'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
@@ -22,6 +25,8 @@ urlpatterns = [
     path('<int:person_id>/tell/', views.tell, name='tell'),
     path('listxue', views.ListXue.as_view()),
     path('xue/<name>/', views.MatchXue.as_view()),
+    path('yao/<name>/', views.MatchYao.as_view()),
+    path('cases/<name>/', views.MatchCases.as_view()),
     path('listxue/<int:pk>/', views.DetailXue.as_view()),
     
 ]
