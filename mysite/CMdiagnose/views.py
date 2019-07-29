@@ -475,6 +475,7 @@ class XueList(APIView):
 
     def get(self, request):
         name=request.GET.get('q', '')
+        print(name)
         if name is not None:
             queryset = Xue.objects.filter(name__icontains=name)
             return Response({'xues': queryset})
@@ -491,6 +492,55 @@ class YaoList(APIView):
         if name is not None:
             queryset = Yao.objects.filter(name__icontains=name)
             return Response({'yaos': queryset})
+
+class FangList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/fangprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        print(name)
+        if name is not None:
+            queryset = Cases.objects.filter(solution__icontains=name)
+            return Response({'fangs': queryset})
+
+class zXueList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/xueprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        print(name)
+        if name is not None:
+            queryset = Xue.objects.filter(responses__icontains=name)
+            return Response({'xues': queryset})
+
+
+class zYaoList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/yaoprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        print(name)
+        if name is not None:
+            queryset = Yao.objects.filter(responses__icontains=name)
+            return Response({'yaos': queryset})
+
+class zFangList(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'CMdiagnose/fangprofile.html'
+
+
+    def get(self, request):
+        name=request.GET.get('q', '')
+        print(name)
+        if name is not None:
+            queryset = Cases.objects.filter(symptom__icontains=name)
+            return Response({'fangs': queryset})
 
 class ListXue(generics.ListCreateAPIView):
     queryset = Xue.objects.all()

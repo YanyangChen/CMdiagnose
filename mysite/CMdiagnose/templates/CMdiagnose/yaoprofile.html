@@ -1,12 +1,17 @@
 <html><body>
-    <h1>Yaos</h1>
-    <ul>
+    <h1>藥材一覽</h1>
+    
         {% for yao in yaos %}
-        <li>{{ yao.name }}</li>
+    <div>
+        ==============================================================================
         {% autoescape off %}
+    <ul>
+        <li>{{ yao.name }}</li>
         <li>{{ yao.properties }}</li>
         <li>{{ yao.responses }}</li>
-        {% endautoescape %}
-        {% endfor %}
     </ul>
+        {% endautoescape %}
+    </div>
+        {% endfor %}
+    
     </body></html>
