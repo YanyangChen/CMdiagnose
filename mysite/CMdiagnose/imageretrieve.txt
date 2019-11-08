@@ -1,5 +1,5 @@
     http://yibian.hopto.org/pic/shu16/15.gif
-
+import requests
 import urllib.request
 from bs4 import BeautifulSoup
 for i in range(451, 501):
@@ -73,3 +73,82 @@ href=soup.findAll('a')
 alinks=soup.select("a[href*=/lilunshuji/fanzhonglin]")
 for a in range(1,alinks.__len__()):
     alinks[a]= str(alinks[a]).replace("<a href=\"","").replace(str(alinks[a])[(int(str(alinks[a]).find("\" title"))):],"")
+
+
+####################################################################################################################################
+page2 = requests.get("http://www.zysj.com.cn/lilunshuji/xupiyetianshiwannianfanganzhenben/790-6-0.html" , proxies={'http': 'proxy1.edb.gov.hk:8080'},timeout=5)
+soup2 = BeautifulSoup(page2.content, 'html.parser')
+head = soup2.findAll('h1')
+parts = soup2.findAll('p')
+casearray = []
+casetext = "";
+for a in range(0,parts.__len__()):
+    if (str(parts[a]) == "<p>□</p>"):
+        
+        if(a > 1):
+            casearray.append(casetext)
+        
+        casetext = ''
+        continue
+        
+    casetext = casetext + str(parts[a]);
+    if(a == (parts.__len__()-1)):
+            casearray.append(casetext)
+            print(a)
+
+for a in range(0,casearray.__len__()):
+    y=Hcases(facts=casearray[a], title=head, reference="《徐批叶天士晚年方案真本》")
+    y.save()
+    print(str(a) + "finished")
+
+####################################################################################################################################
+page2 = requests.get("http://www.zysj.com.cn/lilunshuji/congguicaotangyian/322-7-0.html" , proxies={'http': 'proxy1.edb.gov.hk:8080'},timeout=5)
+soup2 = BeautifulSoup(page2.content, 'html.parser')
+head = soup2.findAll('h1')
+parts = soup2.findAll('p')
+casearray = []
+casetext = "";
+for a in range(0,parts.__len__()):
+    casetext = str(parts[a]);
+    casearray.append(casetext);
+    
+for a in range(0,casearray.__len__()):
+    y=Hcases(facts=casearray[a], title=head, reference="《丛桂草堂医案》")
+    y.save()
+    print(str(a) + "finished")    
+##########################################################################################################################
+page2 = requests.get("http://www.zysj.com.cn/lilunshuji/jisiyian/1211-6-0.html" , proxies={'http': 'proxy1.edb.gov.hk:8080'},timeout=5)
+soup2 = BeautifulSoup(page2.content, 'html.parser')
+head = soup2.findAll('h1')
+parts = soup2.findAll('p')
+casearray = []
+casetext = "";
+for a in range(0,parts.__len__()):
+    if ("【" in str(parts[a]) ):
+        
+        if(a > 1):
+            casearray.append(casetext)
+        
+        casetext = str(parts[a])
+        continue
+        
+    casetext = casetext + str(parts[a]);
+    if(a == (parts.__len__()-1)):
+            casearray.append(casetext)
+            print(a)
+
+for a in range(0,casearray.__len__()):
+    y=Hcases(facts=casearray[a], title=head, reference="《花韵楼医案》")
+    y.save()
+    print(str(a) + "finished")
+
+##########################################################################################################################
+
+
+
+    print(casetext)
+    
+for a in range(1,casearray.__len__()):
+    print(casearray[a])
+    
+    //print("detected!")
